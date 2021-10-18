@@ -13,14 +13,13 @@ include_once "include/header.php";
     var_dump($_POST);
     echo '</pre>';
 
-    $statement = $pdo->prepare("INSERT INTO products (title,image,description,price,create_date)
-    VALUES(:title,:image,:descroption:,:price,:date)");
-
+    $statement = $pdo->prepare("INSERT INTO product (title, image, description, price, create_date)
+          VALUES (:title, :image, :description, :price, :date)");
     $statement->bindValue(':title', $title);
-    $statement->bindValue(':image', '');
+    $statement->bindValue(':image', $imagePath);
     $statement->bindValue(':description', $description);
     $statement->bindValue(':price', $price);
-    $statement->bindValue(':date', $date('Y-m-d H:i:s'));
+    $statement->bindValue(':date', date('Y-m-d H:i:s'));
 
     $statement->execute();
 ?>
