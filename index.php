@@ -7,7 +7,7 @@
 
     $statement = $pdo->prepare("SELECT * FROM product");
     $statement->execute();
-    $products = $statement->fetchAll(PDO::FETCH_ASSOC); 
+    $products = $statement->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <h1>Products Crud</h1>
 <a href="create.php" type="button" class="btn btn-outline-success">Add Product</a>
@@ -26,7 +26,7 @@
     <?php foreach($products as $i => $product) { ?>
       <tr>
       <th scope="row"><?php echo $i +1 ?></th>
-      <td>Mark</td>
+      <td><?php  ?></td>
       <td><?php echo $product['title'] ?></td>
       <td><?php echo $product['price'] ?></td>
       <td><?php echo $product['create_date'] ?></td>
