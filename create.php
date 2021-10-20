@@ -19,7 +19,7 @@ include_once "include/header.php";
 
 
   if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $statement = $pdo->prepare("INSERT INTO product (title, image, description, price, create_date)
+    $statement = $pdo->prepare("INSERT INTO products (title, image, description, price, create_date)
     VALUES (:title, :image, :description, :price, :date)");
 
     $title = $_POST['title'];
@@ -30,13 +30,13 @@ include_once "include/header.php";
     $imagePath = '';
     
     if(!is_dir('images')){
-      echo "1241";
-      mkdir('./2017', 775, true);
+      mkdir('images');
     }
 
 
     if($image){
       $imagePath = 'images/' . randomString(8) . "/" . $image['name'];
+      echo $imagePath;
       mkdir(dirname($imagePath));
       move_uploaded_file($image['tmp_name'], $imagePath);  
     }
@@ -54,8 +54,8 @@ include_once "include/header.php";
       $statement->bindValue(':price', $price);
       $statement->bindValue(':date', date('Y-m-d H:i:s'));
   
-      // $statement->execute();
-      // header('Location: index.php');
+      $statement->execute();
+      header('Location: index.php');
     }
   }
   function randomString($n){

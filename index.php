@@ -5,7 +5,7 @@
     $pdo = new PDO('mysql:host=localhost;dbname=products_crud;','root','');
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $statement = $pdo->prepare("SELECT * FROM product");
+    $statement = $pdo->prepare("SELECT * FROM products");
     $statement->execute();
     $products = $statement->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -26,7 +26,7 @@
     <?php foreach($products as $i => $product) { ?>
       <tr>
       <th scope="row"><?php echo $i +1 ?></th>
-      <td><?php  ?></td>
+      <td><img class="product-img" src="<?php echo $product['image'] ?>" alt="<?php echo $product['title'] ?>"></td>
       <td><?php echo $product['title'] ?></td>
       <td><?php echo $product['price'] ?></td>
       <td><?php echo $product['create_date'] ?></td>
