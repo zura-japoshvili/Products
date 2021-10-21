@@ -92,7 +92,7 @@ include_once "include/header.php";
   </div>
   <div class="mb-3">
     <label>Product Price</label>
-    <input type="number" name="price" class="form-control" value="<?php echo $price ?>">
+    <input step="0.01" type="number" name="price" class="form-control" value="<?php echo $price ?>">
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
